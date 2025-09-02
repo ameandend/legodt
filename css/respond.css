@@ -1,0 +1,253 @@
+/* ipad */
+/* 1280 / 1028 */
+@media screen and (max-width: 1280px) {
+    html {
+        font-size: 8px;
+    }
+}
+
+@media screen and (max-width: 980px) {
+
+    /*  1. 제거하기 - 헤더나 메뉴*/
+    .main-menu,
+    .header-right,
+    address,
+    .company-info {
+        display: none;
+    }
+
+    /*  2. 보이기 - 햄버거버튼 */
+    /*  3. 100% 만들기 */
+
+    /* header */
+    /* ham-btn가운데만들기 - position:absolute로 잡혀있어서 위치만 지정해주면됨 */
+    .header-left {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    /* main-slider */
+    /* main-slider img-box랑 글자가 겹치도록 */
+    .main-slider>div .text-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+    }
+
+    .main-slider>div .text-box .slider-title {
+        color: #fff;
+    }
+
+    .main-slider>div .text-box .explication {
+        color: #fff;
+        text-shadow: 1px 5px 5px rgba(0, 0, 0, 0.2);
+        font-weight: 800;
+    }
+
+    main {
+        /* 이미지커서 밖으로 나가는거 다 숨겨두기 - 옆 스크롤방지 */
+        overflow: hidden;
+    }
+
+    /* shop by category */
+    .category-list {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .category-list>div {
+        /* gap값 만큼 빼주기 <- 전체 다 빠지니까
+           40px(가운데 갭2개값) / 3 만큼 뺴주기 */
+        /* 100% / 개수 - (간격 *2 / 보여주지는 개수) */
+        width: calc(100% / 3 - 13.3333335px);
+        /* 기존 스타일때문에 */
+        flex: none;
+    }
+
+    .category-list>div:first-child,
+    .category-list>div:nth-child(2) {
+        width: calc(100% / 2 - 10px);
+    }
+
+    /* make your own */
+
+    /* loved by */
+    .loved-by-list-top {
+        /* 자식 보여주기 */
+        /* 보여주고 싶은 자식이 3개일때 원래 100% *3 = 300% */
+        /* 자식 1 => 100% * 자식개수 */
+        /* 자식 2 => 100% * 자식의 개수 / 보고싶은 자식개수 */
+        width: calc(100% * 3 / 1.33333);
+        gap: 20px;
+    }
+
+    .loved-by-list-bottom {
+        /* 자식요소 아래로 떨어뜨리기 */
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .loved-by-list-bottom .loved {
+        width: calc(100% / 2 - 10px);
+
+    }
+
+    /* new in */
+    .new-in-wrap .outline-title {
+        margin-bottom: 0;
+    }
+
+    .new-in-wrap .new-item-img {
+        width: 60%;
+        position: static;
+        transform: translateY(0);
+    }
+
+    .arrow-list {
+        position: absolute;
+        right: 2.5%;
+        bottom: 10rem;
+    }
+
+    /* summer sorted */
+    .sunshade-list {
+        gap: 2rem;
+        width: calc(100% * 4 / 1.17);
+    }
+
+    /* catalogue */
+
+    .catalogue-list {
+        gap: 2rem;
+        width: calc(100% * 3 / 1.3);
+    }
+
+    /* footer */
+
+    footer {}
+
+    .footer-menu {
+        width: 100%;
+        justify-content: space-between;
+        line-height: 2;
+    }
+
+    /* 2n 짝수만  */
+    .footer-menu>li:nth-child(2n) {
+        text-align: right;
+    }
+
+}
+
+
+/* mobile */
+/* 768px / 320,  360, 480, 640px */
+@media screen and (max-width: 768px) {
+    .logo img {
+        width: 120px;
+    }
+
+    .ham-btn img {
+        width: 24px;
+    }
+
+    .main-slider {
+        /* vw : viewport width
+           vh : viewprot height
+           현재보는 기기의 너비를 중심 
+           height: 120vw -> 기기의 너비의 120%가 높이 */
+        height: 130vw;
+    }
+
+    .main-slider>div {
+        height: 100%;
+    }
+
+    .main-slider>div .img-box img {
+        height: 100%;
+        /* 그림을 채우고 싶을때 */
+        object-fit: cover;
+    }
+
+    .main-slider>div .text-box {
+        width: 100%;
+    }
+
+    .main-slider>div .text-box .shop-now-btn>a {
+        padding: 1rem 3rem;
+        font-size: 1.6rem;
+    }
+
+    .main-slider-wrap .slider-pager {
+        left: 0;
+        width: 100%;
+        bottom: 20px;
+        gap: 10px;
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    .container section {
+        margin-bottom: 50px;
+    }
+
+    .container .section-title {
+        font-size: 4rem;
+        margin-bottom: 4rem;
+    }
+
+    /* make your */
+    .make-your-wrap .make-your .text-box {
+        /* 글 간격 두줄로 */
+        width: 100%;
+    }
+
+    .make-your .text-box .lets-btn {
+        padding: 1rem 3rem;
+        font-size: 1.6rem;
+    }
+
+    /* loved by */
+
+    /* new in */
+
+    .new-in-wrap .outline-title {
+        font-size: 6rem;
+    }
+
+    .new-in-wrap .new-item-img {
+        width: 100%;
+    }
+
+    .new-in-wrap .shop-now-btn>a,
+    .arrow-list>li>a {
+        padding: 1rem 3rem;
+    }
+
+    .tab-menu-list {
+        font-size: 1.75rem;
+        gap: 2rem;
+    }
+
+    .catalogue-list>div .thumb-img {
+        gap: 0;
+    }
+
+    /* footer */
+
+    .footer-bottom {
+        gap: 0;
+    }
+
+    .sns-list>li {
+        /* 1:1 비율맞추기 */
+        flex: 1;
+    }
+
+
+
+}

@@ -1,0 +1,840 @@
+:root {
+    --main-color: #ef4da2;
+    --secondary-color: #b59274;
+    --font-base-color: #1a1a1a;
+    --font-secondary-color: #9a9a9a;
+    --font-del-color: #d3d3d3;
+    --font-warn: #ec2a1d;
+    --font-succes: #0985df;
+    --section-title-size: 6rem;
+
+}
+
+
+/* font-family: "Outfit",  "Suit", "sans-serif" ; */
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: "Outfit", "Suit", "sans-serif";
+    font-size: 1.6rem;
+    color: var(--font-base-color);
+}
+
+/* wide-inner랑 inner색은 유지하면서 작업할것 */
+.wide-inner {
+    margin: 0 2.5%;
+    background-color: rgba(255, 0, 0, 0.2);
+    position: relative;
+}
+
+.inner {
+    max-width: 1680px;
+    padding: 0 2.5%;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 225, 0.2);
+}
+
+/* header */
+header {
+    background: var(--main-color);
+    height: 7rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* 로고가 가운데 일 때 반응형을 생각해서 사라질애를(로고) 가운데로 주고 남을 애들을(양옆메뉴)를 position:absolut로 띄움 */
+.logo {
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7rem;
+
+    img {
+        /* img는 원래 인라인이므로 여백이 남지않게 block처리 */
+        display: block;
+    }
+}
+
+.header-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.main-menu {
+    display: flex;
+    gap: 2.4rem;
+
+    >li {
+        /* background-color: green; */
+        position: relative;
+
+        >a {
+            font-size: 2rem;
+            font-weight: 600;
+            /* 서브메뉴가 없어서  */
+            line-height: 7rem;
+            color: #fff;
+
+        }
+    }
+
+    >li:hover {
+        .depth1 {
+            /* 서브메뉴 하나씩 나오기  */
+            display: block;
+        }
+    }
+
+}
+
+/* 고정 헤더 띄우기 */
+.main-menu::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 0;
+    background: var(--main-color);
+    /* 헤더 고정 */
+    position: fixed;
+    left: 0;
+    top: 70px;
+}
+
+.main-menu:hover::before {
+    height: 120px;
+}
+
+/* 서브메뉴 하나씩 볼때 
+.main-menu>li:hover .depth1 {
+    display: block;
+}
+*/
+
+/* 서브메뉴를 전부 볼 때 */
+.main-menu:hover .depth1 {
+    display: block;
+    /* 서브메뉴 띄우기 높이헤더랑 똑같이 */
+    height: 120px
+}
+
+/* 서브메뉴 배경이 100%인 경우 header fixed일때 사용할것 
+스크립트는 헤더가 fixed아니여도됨 */
+
+
+
+/* 서브메뉴 숨겨두기 */
+.depth1 {
+    display: none;
+    background-color: skyblue;
+    position: absolute;
+    /* border: 1px solid black; */
+    left: 50%;
+    transform: translateX(-50%);
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+
+}
+
+.header-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    height: 7rem;
+    gap: 3rem;
+}
+
+
+.header-right ul {
+    display: flex;
+    gap: 2.4rem;
+}
+
+.header-right>ul>li {
+    position: relative;
+    /* background-color: skyblue; */
+    /* 헤더 높이 꽉 채우기*/
+    line-height: 70px;
+}
+
+.header-right>ul>li>a {
+    color: #FFF;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+
+.header-right .depth1 {
+    display: none;
+    height: auto;
+    padding: 12px 30px 12px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--font-del-color);
+    background: #fff;
+    line-height: 2;
+    font-size: 1.4rem;
+    top: 60px;
+    color: #1a1a1a;
+}
+
+.header-right>ul>li:hover .depth1 {
+    display: block;
+}
+
+.gnb-icon .cart-count {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    color: #fff;
+    background: #ef4f11;
+    border-radius: 50%;
+    line-height: 2rem;
+    font-size: 1rem;
+    right: -10px;
+    top: 15px;
+    text-align: center;
+
+}
+
+
+
+/* main */
+.main-slider-wrap {
+    /* slider-pager의 부모 */
+    position: relative;
+}
+
+.main-slider {
+    position: relative;
+    /* 배너가 4개 슬라이드 만들때 
+    display: flex;
+    width: calc(100% * 4); */
+    /* 배너 페이드인 */
+
+}
+
+.main-slider>div {
+    /* 그림영역 옆으로 붙이기 */
+    display: flex;
+    width: 100%;
+    position: absolute;
+    /* 다른거 숨기기 */
+    top: 0;
+    left: 0;
+    border-radius: 0 0 50px 50px;
+    overflow: hidden;
+
+}
+
+.main-slider>div>div {}
+
+.main-slider>.slider1 {
+    background: #bc0a2c;
+}
+
+
+.main-slider>.slider2 {
+    background: #FCB8C8;
+}
+
+.main-slider>.slider3 {
+    background: #e14337;
+}
+
+.main-slider>.slider4 {
+    background: #b3c5ec;
+}
+
+
+.main-slider>.active {
+    position: relative;
+    z-index: 100;
+}
+
+
+.main-slider>div>div {
+    /* 이미지박스랑 텍스트박스의 비율이 1:1 */
+    flex: 1;
+}
+
+.main-slider>div .img-box img {
+    width: 100%;
+}
+
+.main-slider>div .text-box {
+    text-align: center;
+    /* 옆으로 붙이기 */
+    display: flex;
+    /* 기본은 옆으로 붙는것
+    방향을 아래로 변경하면 */
+    flex-direction: column;
+    /* 가운데로 만들기 */
+    justify-content: center;
+    gap: 30px;
+}
+
+.main-slider>div .text-box .slider-title {
+    font-size: 6rem;
+}
+
+.main-slider>div .text-box .explication {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.main-slider>div .text-box .shop-now-btn>a {
+    display: inline-block;
+    background: #fff;
+    padding: 2rem 4rem;
+    border-radius: 50px;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.main-slider-wrap .slider-pager {
+    /* main-slider-wrap가 부모 */
+    position: absolute;
+    bottom: 50px;
+    right: 0px;
+    display: flex;
+    gap: 30px;
+    /* 오른쪽 박스에만 표시하도록 위치 */
+    width: 50%;
+    z-index: 100;
+    justify-content: center;
+}
+
+.slider-pager>li {}
+
+.slider-pager>li>a {
+    display: block;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 20px;
+    background: #fff;
+    opacity: 0.7;
+    /* 1,2,3,4 숫자를 저멀리 들여쓰기해서 안보이게 */
+    text-indent: -999999px;
+}
+
+.slider-pager>.active>a {
+    width: 6.4rem;
+    opacity: 1;
+}
+
+.container {
+    margin-top: 16rem;
+}
+
+.container section {
+    margin: 0 0 16rem;
+}
+
+.container .section-title {
+    font-size: 6rem;
+    text-align: center;
+    color: var(--main-color);
+    margin-bottom: 6rem;
+}
+
+.category-wrap {}
+
+.category-list {
+    display: flex;
+    gap: 40px;
+}
+
+.category-list>div {
+    flex: 1;
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+
+.category-list>div .img-box {
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.category-list>div .img-box img {
+    width: 100%;
+    /* img-box img 효과의 트랜지션 */
+    transition: 0.3s;
+}
+
+.category-list>div:hover .img-box img {
+    opacity: 0.6;
+    /* 가운데로 확대 */
+    transform: scale(1.2);
+}
+
+.make-your-wrap {
+    background: #9a9a9a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+}
+
+.make-your-wrap .make-your {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#a500ff+0,c7dee2+50,7db9e8+100 */
+    background: linear-gradient(to right, #a500ff 0%, #c7dee2 50%, #7db9e8 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.make-your-wrap .make-your .text-box {
+    /* text-box img-box에 겹쳐놓기 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+.make-your .text-box .logo-box {
+    display: inline-block;
+    border-radius: 50px;
+    border: 2px solid #fff;
+    padding: 5px;
+}
+
+.make-your .text-box>p>img {
+    width: 80px;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-10%);
+}
+
+.make-your-wrap .img-box img {
+    width: 100%;
+}
+
+.make-your-wrap .text-box {
+    /* 버튼의 크기를 조절하는 방법 display:flex;하고 정렬하면 자기 사이즈에 맞춰 줄어듬 /
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* column띄우기로 갭주기 
+    gap: 20px;*/
+
+
+}
+
+.make-your .text-box .slider-title {
+    font-size: 6rem;
+    margin: 20px 0 50px;
+    text-shadow: 10px 20px 20px rgba(0, 0, 0, 0.03);
+    font-weight: 900;
+
+}
+
+.make-your .text-box .lets-btn {
+    background: var(--font-base-color);
+    padding: 2rem 3.6rem;
+    border-radius: 5rem;
+    /* btn 크기 줄이기*/
+    display: inline-block;
+    margin-top: 2rem;
+    font-size: 2rem;
+}
+
+/* love - by */
+.loved-by-wrap {}
+
+.loved-by-wrap>div>div .num {
+    font-size: 6.4rem;
+    font-weight: 700;
+    position: absolute;
+    top: 0;
+    left: 2.4rem;
+    z-index: 900;
+    /* 글자크기의 30프로 위로올리기 */
+    transform: translateY(-30%);
+}
+
+.loved-by-list-top .num {
+    color: var(--main-color);
+}
+
+.loved-by-list-top,
+.loved-by-list-bottom {
+    display: flex;
+    gap: 4rem;
+
+}
+
+
+.loved-by-list-top .loved,
+.loved-by-list-bottom .loved {
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+.loved .text-box {
+    padding: 3rem 2rem;
+}
+
+
+/* sunshade랑 공통된 부분 */
+.loved .text-box .price-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.loved .text-box .price {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.loved .text-box .sale {
+    font-weight: 600;
+    color: var(--main-color)
+}
+
+.loved .text-box .price span {
+    color: #9a9a9a;
+    text-decoration: line-through;
+}
+
+.loved-by-wrap .loved {
+    position: relative;
+}
+
+
+
+.summer-sorted-wrap {}
+
+.tab-menu-list {
+    display: flex;
+    gap: 5rem;
+    justify-content: center;
+    font-size: 2.4rem;
+    color: #777;
+    font-weight: 600;
+}
+
+.tab-menu-list>.active {
+    color: var(--main-color);
+    position: relative;
+}
+
+.tab-menu-list>.active::after {
+    content: "";
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--main-color);
+    position: absolute;
+    top: 0;
+    right: -6px;
+}
+
+.sunshade-list {
+    display: flex;
+    gap: 4rem;
+    margin: 4rem 0;
+}
+
+
+
+.sunshade-list>div {}
+
+.sunshade-list .img-box,
+.loved-by-list-top .img-box,
+.loved-by-list-bottom .img-box {
+    position: relative;
+    border-radius: 3rem;
+    overflow: hidden;
+    background: #fff;
+    margin: 2rem 0;
+}
+
+.sunshade-list .img-box .hover-img,
+.loved .img-box .hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.sunshade-list .img-box:hover .hover-img,
+.loved .img-box:hover .hover-img {
+    opacity: 1;
+}
+
+.loved-by-wrap .img-box .heart-icon>a,
+.sunshade-list .img-box .heart-icon>a {
+    position: absolute;
+    display: block;
+    width: 32px;
+    height: 32px;
+    background-image: url(../images/icon_heart-w.png);
+    top: 4rem;
+    right: 3rem;
+}
+
+.loved-by-wrap .img-box .heart-icon.active>a,
+.sunshade-list.img-box .heart-icon.active>a {
+    background-image: url(../images/icon_heart-p.png);
+}
+
+.loved .text-box .add-cart {
+    font-weight: 600;
+    text-decoration: underline;
+    margin: 10px 0;
+    display: flex;
+}
+
+/* .sunshade-list .text-box {
+    padding: 3rem 2rem;
+    font-size: 1.8rem;
+}
+
+.sunshade-list .text-box>p {
+    font-weight: 700;
+}
+
+.sunshade-list .text-box .price-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.sunshade-list .text-box .price-wrap span {
+    text-decoration: line-through;
+}
+
+.sunshade-list .text-box .price-wrap .sale {
+    color: var(--main-color); 
+
+} */
+
+
+/* new-in */
+.new-in-wrap {
+    background: rgb(141, 182, 243);
+    padding: 10rem 0;
+    /* 기본폰트사이즈 지정 - 아래랑 비슷하면 여기에도 가능 */
+    font-size: 1.6rem;
+    color: #fff;
+    position: relative;
+}
+
+
+.new-in-wrap .section-title {
+    color: #01a799;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.new-in-wrap .section-sub-title {
+    font-size: 3.6rem;
+    font-weight: 800;
+}
+
+.new-in-wrap .outline-title {
+    font-size: 10rem;
+    font-weight: 900;
+    -webkit-text-stroke: 1px #fff;
+    color: transparent;
+    margin-bottom: 100px;
+}
+
+.new-in-wrap .new-item-img {
+    /* 이미지 띄워서 오른쪽으로 이동 -inner가 부모 */
+    position: absolute;
+    width: 47%;
+    right: 0;
+    top: 50%;
+    /* pc버전에 있으면 mobidle 버전에서 없애야함 */
+    transform: translateY(-50%);
+
+    img {
+        width: 100%;
+    }
+}
+
+.new-in-wrap .item-title {
+    font-size: 2.4rem;
+    font-weight: 900;
+    margin: 7rem 0 2rem;
+}
+
+.new-in-wrap .item-describe {
+    font-size: 1.6rem;
+}
+
+
+
+.new-in-wrap .shop-now-btn>a {
+    display: inline-block;
+    border: 1px solid #fff;
+    border-radius: 50px;
+    text-align: center;
+    padding: 1.6rem 20rem;
+    margin: 50px 0 0;
+}
+
+.new-in-wrap .shop-now-btn>a p {
+    overflow: hidden;
+}
+
+.new-in-wrap .shop-now-btn>a span {
+    position: relative;
+    display: inline-block;
+    transition: 0.3s;
+    /* 영역 확인용 border:1px solid black; */
+    /* 글씨숨기기 */
+}
+
+.new-in-wrap .shop-now-btn>a span::after {
+    content: "Shop Now";
+    /* a의 span이 기준 */
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+.new-in-wrap .shop-now-btn>a:hover span {
+    transform: translateY(-100%);
+}
+
+.arrow-list {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 50px;
+}
+
+.arrow-list>li>a {
+    background: #fff;
+    display: flex;
+    padding: 10px 24px;
+    border-radius: 50px;
+}
+
+.arrow-list>li>a img {
+    transition: 0.3s;
+
+}
+
+.arrow-list>li:first-child>a:hover img {
+    transform: translateX(-10px);
+}
+
+.arrow-list>li:last-child>a:hover img {
+    transform: translateX(10px);
+}
+
+
+.section-title {
+    color: var(--main-color);
+    text-align: center;
+    padding: 100px 0 0;
+}
+
+
+.catalogue-wrap {}
+
+.catalogue-list {
+    display: flex;
+    gap: 4rem;
+}
+
+.catalogue-list>div {}
+
+.catalogue-list>div .big-img {
+    border-radius: 4rem;
+    /* plus-btn이 안으로 들어감 */
+    overflow: hidden;
+    position: relative;
+}
+
+.catalogue-list>div .big-img>img {
+    /* common.css 공통사항
+    width: 100%; */
+}
+
+/*  이미지위에 플러스버튼 겹치게 올리기 */
+.catalogue-list>div .big-img>.more-plus-btn {
+    position: absolute;
+}
+
+.catalogue-list>.cata1 .big-img>.more-plus-btn:first-of-type {
+    /* img가 첫번째 자식인경우 first-child 말고 p태그의첫번째 자식 first-of-type */
+    /* 확실하게 하려면 class명을 주는것을 권장 */
+    top: 200px;
+    left: 50px;
+}
+
+.catalogue-list>.cata1 .big-img>.more-plus-btn:nth-of-type(2) {
+    top: 130px;
+    right: 110px;
+}
+
+.catalogue-list>.cata1 .big-img>.more-plus-btn:last-of-type {
+    top: 55%;
+    left: 62%;
+}
+
+
+.catalogue-list>div .thumb-img {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.catalogue-list>div .thumb-img>p {
+    width: 35%;
+    border-radius: 20px;
+    background: #fff;
+}
+
+
+/* footer */
+.footer-menu {
+    display: flex;
+    /* flex설정후 자식 떨어뜨리기 */
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    /* 옆에만 여백주기 column-gap */
+    column-gap: 50px;
+
+}
+
+.footer-menu>li {
+    width: 30%;
+}
+
+.footer-bottom {
+    margin-top: 100px;
+}
+
+.sns-list {
+    display: flex;
+    align-items: center;
+}
+
+.sns-list>li {}
+
+.sns-list>.es-mark img {
+    height: 32px;
+}
