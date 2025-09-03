@@ -21,12 +21,13 @@ body {
     font-family: "Outfit", "Suit", "sans-serif";
     font-size: 1.6rem;
     color: var(--font-base-color);
+    background: #f3f3f3;
 }
 
 /* wide-inner랑 inner색은 유지하면서 작업할것 */
 .wide-inner {
     margin: 0 2.5%;
-    background-color: rgba(255, 0, 0, 0.2);
+    /* background-color: rgba(255, 0, 0, 0.2);  */
     position: relative;
 }
 
@@ -34,7 +35,7 @@ body {
     max-width: 1680px;
     padding: 0 2.5%;
     margin: 0 auto;
-    background-color: rgba(0, 0, 225, 0.2);
+    /* background-color: rgba(0, 0, 225, 0.2); */
 }
 
 /* header */
@@ -106,7 +107,7 @@ header {
     /* 헤더 고정 */
     position: fixed;
     left: 0;
-    top: 70px;
+    top: 7rem;
 }
 
 .main-menu:hover::before {
@@ -121,9 +122,9 @@ header {
 
 /* 서브메뉴를 전부 볼 때 */
 .main-menu:hover .depth1 {
-    display: block;
+    /* display: block; */
     /* 서브메뉴 띄우기 높이헤더랑 똑같이 */
-    height: 120px
+    height: 120px;
 }
 
 /* 서브메뉴 배경이 100%인 경우 header fixed일때 사용할것 
@@ -134,7 +135,7 @@ header {
 /* 서브메뉴 숨겨두기 */
 .depth1 {
     display: none;
-    background-color: skyblue;
+    /* background-color: skyblue; */
     position: absolute;
     /* border: 1px solid black; */
     left: 50%;
@@ -381,7 +382,6 @@ header {
 }
 
 .make-your-wrap {
-    background: #9a9a9a;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -390,6 +390,7 @@ header {
 }
 
 .make-your-wrap .make-your {
+    position: relative;
     /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#a500ff+0,c7dee2+50,7db9e8+100 */
     background: linear-gradient(to right, #a500ff 0%, #c7dee2 50%, #7db9e8 100%);
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
@@ -810,31 +811,46 @@ header {
 
 
 /* footer */
-.footer-menu {
+footer {
+    background:#b59274;
+    padding:50px 0;
+    color:#fff;
+}
+.footer-top,
+.footer-bottom{
     display: flex;
-    /* flex설정후 자식 떨어뜨리기 */
-    flex-wrap: wrap;
+    justify-content: space-between;
+    gap:200px;
+}
+.company-info h2{
+    font-size:1rem;
+}
+.company-info address{
+    font-size:12px;
+    margin:20px 0 0;
+    line-height: 1.8;
+}
+.company-info address span{
+    margin-right: 20px;
+}
+.footer-menu{
+    display: flex;
+    flex-wrap:wrap ;
     justify-content: flex-end;
-    /* 옆에만 여백주기 column-gap */
     column-gap: 50px;
-
+}
+.footer-menu>li{
+    width:30%;
 }
 
-.footer-menu>li {
-    width: 30%;
-}
-
-.footer-bottom {
+.footer-bottom{
     margin-top: 100px;
 }
-
-.sns-list {
+.sns-list{
     display: flex;
     align-items: center;
 }
-
-.sns-list>li {}
-
-.sns-list>.es-mark img {
+.sns-list>li{}
+.sns-list>.es-mark img{
     height: 32px;
 }
